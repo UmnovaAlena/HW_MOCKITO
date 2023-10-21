@@ -51,7 +51,7 @@ public class MovieManagerTest {
     }
 
     @Test
-    public void testFindLast() {
+    public void testFindLastLessLimit() {
         MovieManager manager = new MovieManager();
         manager.addMovie("Film I");
         manager.addMovie("Film II");
@@ -79,7 +79,7 @@ public class MovieManagerTest {
     }
 
     @Test
-    public void testFindFiveLast() {
+    public void testFindLastEqualsLimit() {
         MovieManager manager = new MovieManager();
         manager.addMovie("Film I");
         manager.addMovie("Film II");
@@ -92,4 +92,21 @@ public class MovieManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void testFindLastMoreLimit() {
+        MovieManager manager = new MovieManager();
+        manager.addMovie("Film I");
+        manager.addMovie("Film II");
+        manager.addMovie("Film III");
+        manager.addMovie("Film IV");
+        manager.addMovie("Film V");
+        manager.addMovie("Film VI");
+
+        String[] expected = {"Film VI", "Film V", "Film IV", "Film III", "Film II"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
 }
